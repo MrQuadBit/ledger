@@ -9,12 +9,18 @@ from src.print import printCommand
 from src.fillNones import fillNones
 from src.sort import sort
 from src.register import registerCommand
+from src.priceDB import exchange
 
 def execute(file, sort_flag, db):
     lines : List[str] = readFiles(file)
     transactions = parse(lines)
     transactions = fillNones(transactions)
     transactions = sort(transactions, sort_flag)
+    if not db:
+        pass
+    else:
+        db_lines = readFiles(db)
+        transactions = exchange(transactions, db_lines)
     print('Welcome to SLI (Simple Ledger Implementation)\nEnter a command:\n(balance, register, print) or their short versions (bal, reg, p)\nor enter (q / Q) to Quit')
     command : str = ''
     query : str = ''
