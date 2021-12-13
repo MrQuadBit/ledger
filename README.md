@@ -3,17 +3,7 @@ This is a simple ledger implementation
 
 [ledger](https://www.ledger-cli.org/) is tool for double-entry accounting system that is accessed from UNIX command-line
 
-Double-entry accounting is a standard bookkeeping approach
-
-A transaction have 
-
-All this information have been specified in a file written in plain text (the extension is irrelevant to have more compatibility but for having a better order you can use .ledger extensions)
-
-This file in ledger is refered as Journal and this is its syntax:
-
-Date Description
-- Account:SubCategory Commodity Amount
-
+If you have not ever read about ledger I recommend this [reading](https://rolfschr.github.io/gswl-book/latest.html) to have a better understanding of this project
 
 This project implements 3 commands and 3 flags
 
@@ -40,6 +30,17 @@ This project implements 3 commands and 3 flags
   - Execute the helper of ledger.py
      - > ./ledger.py -h
 ## Documentation 
+Double-entry accounting is a standard bookkeeping approach where in every transaction at least 2 accounts are involve.
+
+A transaction in ledger look lie [this](https://www.ledger-cli.org/3.0/doc/ledger3.html#The-Most-Basic-Entry)
+
+All this information have been specified in a file written in plain text (the extension is irrelevant to have more compatibility but for having a better order you can use .ledger extensions)
+
+This file in ledger is refered as Journal and this is its syntax:
+
+Date Description
+- Account:SubCategory Commodity Amount
+
 **Commands**
 - **print**
   - Display all transactions inside the file given as Input
@@ -61,3 +62,4 @@ This project implements 3 commands and 3 flags
     - **This option does not have searching query by sub-category**
 - **balance**
   - It creates a total balance from all transactions
+[Reading reference]()
