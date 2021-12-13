@@ -30,16 +30,26 @@ This project implements 3 commands and 3 flags
   - Execute the helper of ledger.py
      - > ./ledger.py -h
 ## Documentation 
-Double-entry accounting is a standard bookkeeping approach where in every transaction at least 2 accounts are involve.
+Double-entry accounting is a standard bookkeeping approach where in every transaction at least 2 accounts are involve, e.g:
 
-A transaction in ledger look lie [this](https://www.ledger-cli.org/3.0/doc/ledger3.html#The-Most-Basic-Entry)
+(Transaction for buying a bag of gummies)
 
-All this information have been specified in a file written in plain text (the extension is irrelevant to have more compatibility but for having a better order you can use .ledger extensions)
+If I buy a bag of gummies that costs $5, at least 2 accounts are involved here my wallet and my expeneses, where $5 are disscount from my wallet and are added $5 to my expenses account.
 
-This file in ledger is refered as Journal and this is its syntax:
+A transaction in ledger looks like [this](https://www.ledger-cli.org/3.0/doc/ledger3.html#The-Most-Basic-Entry), but in summary a transaction has:
+  - Date (yyyy/mm/dd)
+  - Description (string)
+  - Accounts: (List)
+    - Sub-categories (List)
+    - Commodity (string)
+    - Amount (number)
+    
+With the example of the gummies a transaction in ledger could be:
+  - 2021/12/12 Purchased a bag of gummies
+    - Assets:My wallet       -$5
+    - Expenses:Food:Candies   $5
 
-Date Description
-- Account:SubCategory Commodity Amount
+All this transactions (also know as Journal) have to be written in a file as plain text (the extension is irrelevant but to have more compatibility or better order use .ledger extension)
 
 **Commands**
 - **print**
