@@ -1,15 +1,20 @@
+#!/usr/bin/env python3
 # -db https://www.ledger-cli.org/3.0/doc/ledger3.html#:~:text=N%20SYMBOL-,D%20AMOUNT,-Specifies%20the%20default
 import argparse
 from src.readLinesFromFile import readFiles
 from src.parser import parse
-from src.Transaction import Transaction
 from typing import List
 from src.balance import balanceCommand
 from src.print import printCommand
+from src.fillNones import fillNones
+from src.sort import sort
+from src.register import registerCommand
 
-def execute(file, sort, db):
+def execute(file, sort_flag, db):
     lines : List[str] = readFiles(file)
-    transactions : List[Transaction] = parse(lines)
+    transactions = parse(lines)
+    transactions = fillNones(transactions)
+    transactions = sort(transactions, sort_flag)
     print('Welcome to SLI (Simple Ledger Implementation)\nEnter a command:\n(balance, register, print) or their short versions (bal, reg, p)\nor enter (q / Q) to Quit')
     command : str = ''
     query : str = ''
@@ -25,12 +30,11 @@ def execute(file, sort, db):
             query = input_line[1]
 
         if command == "balance" or command == 'bal':
-            print('Balance command')
-            balanceCommand(transactions)
+            balanceCommand(transactions, query)
         elif command == "register" or command == 'reg':
-            print('Register command')
+            registerCommand(transactions, query)
         elif command == "print" or command == 'p':
-            printCommand(transactions, query, sort)
+            printCommand(transactions, query)
         else:
             print(f'Command {command} is not valid')
     print('You quit, bye')

@@ -1,11 +1,4 @@
-def sort(transactions, flag):
-    if flag == 'd':
-        transactions.sort(key=lambda t: t.date)
-    else:
-        print('sort by ammount')
-    return transactions
-
-def printCommand(transactions, query, flag):
+def printCommand(transactions, query):
     if query != '':
         transactions_matched = []
         transaction_added : bool
@@ -17,7 +10,6 @@ def printCommand(transactions, query, flag):
                         transactions_matched.append(transaction)
                         transaction_added = True
                         continue
-        transactions_matched = sort(transactions_matched, flag)
         for transaction in transactions_matched:
             print(transaction)
     else:

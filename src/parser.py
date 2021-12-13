@@ -82,10 +82,10 @@ def parse(lines : List[str]) -> List[str]:
                 if len(amount) == 1:
                     for c in amount[0]:
                         if not is_a_number(c) and c != '.' and c != '-':
-                            new_account.amount = amount[0].replace(c, '')
+                            new_account.amount = float(amount[0].replace(c, ''))
                             new_account.commodity = c
                 else:
-                    new_account.amount = amount[0]
+                    new_account.amount = float(amount[0])
                     new_account.commodity = amount[1]
             except:
                 new_account.amount = None
