@@ -68,8 +68,42 @@ All this transactions (also know as Journal) have to be written in a file as pla
     - First execute ledger with a file
     - > ./ledger.py -f name_file.ledger
     - Then write the register or reg command to display all the transaction in name_file.ledger in a old-fashioned way
-    - > print
-    - **This option does not have searching query by sub-category**
+    - > register
+    - In colored blue will appear the sub-categories
+    - In colored red will appear all the negative amounts
+    - **This option does not support searching query by sub-category**
 - **balance**
   - It creates a total balance from all transactions
-[Reading reference]()
+  - Usage:
+    - First execute ledger with a file
+    - > ./ledger.py -f name_file.ledger
+    - Then write the balance or bal command to display the balance from all the transaction inside name_file.ledger
+    - balance
+    - In colored blue will appear the sub-categories
+    - In colored red will appear all the negative amounts
+    - **This option does not suport searching query by sub-category**
+**Flags**
+- **--file**
+  - Read a file as Input
+  - This implementation can accept
+    - Only journals (File with transactions)
+    - Only indexes (File with the location of other journals or files) _require directive include or !include_
+    - Or a file with transactions and indexes
+   - Usage:
+     - > ./ledger.py -f name_file.ledger
+- **--sort**
+  - Sort a printing results by comparing values by a certain value (d or a)
+  - d stands for date in transaction
+  - a stands for ammount in account
+  -Usage:
+    - Execute ledger with a file and the flag --sort 
+    - > ./ledger.py -f name_file.ledger --sort d
+    - Then use print command to prove this sorting
+- **--price-db**
+  - Specify a price history file to use in commands
+    - This files helps to keep a history of exchanges alse helps to keep different exchanges
+    - Usage:
+    - First execute ledger with a file and the flag --price-db
+    - > ./ledger.py -f name_file.ledger --price-db prices_db_file
+
+#Conclusion
