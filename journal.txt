@@ -1,0 +1,44 @@
+; https://gist.github.com/rolfschr/318f1f91f8f845864568
+;
+; The opening balance sets up your initial financial state.
+; This is needed as one rarely starts with no money at all.
+; Your opening balance is the first "transaction" in your journal.
+; The account name is not special. We only need something convenient here.
+2041/12/31 * Opening Balance
+    Assets:Checking                        $1000.00
+    Equity:OpeningBalances
+
+; The money comes from the employer and goes into the bank account.
+2041/01/31 * Salary
+    Income:Salary                            -$1337
+    Assets:Checking                           $1337
+
+; Groceries were paid using the bank account's electronic cash card
+; so the money comes directly from the bank account.
+2042/02/15 * Shopping
+    Expenses:Food:Groceries                  $42.00
+    Assets:Checking
+
+; Although we know the cash sits in the wallet, everything in cash is
+; considered as "lost" until recovered (see next transaction and later chapters).
+2042/02/15 * ATM withdrawal
+    Expenses:Unknown                        $150.00
+    Assets:Checking
+
+; Paying food with cash: Moving money from the Expenses:Unknown
+; account to the food account.
+2042/02/15 * Shopping
+    Expenses:Food:Groceries                 $23.00
+    Expenses:Unknown
+
+; Ledger automatically reduces 'Expenses:Unknown' by $69.
+2042/02/22 * Shopping
+    Expenses:Food:Groceries                 $23.00
+    Expenses:Clothing                       $46.00
+    Expenses:Unknown
+
+; You can use positive (add money to an account) or negative
+; (remove money from an account) amounts interchangeably.
+2042/02/22 * Shopping
+    Expenses:Food:Groceries
+    Expenses:Unknown                       -$42.00

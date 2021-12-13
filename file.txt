@@ -1,0 +1,11 @@
+2015/10/12 Exxon 
+    Expenses:Auto:Gas           $10.00
+    Liabilities:MasterCard      $-10.00
+
+2021/12/08 D4N0 
+    Expenses:Computer         $50.00
+    Assets:Bancoppel          $-50.00
+
+2021/12/08 Luna
+    Expenses:Computer       $50.00
+    Ambar:Bancoppel         $-50.00
